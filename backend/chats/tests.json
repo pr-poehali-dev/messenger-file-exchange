@@ -1,0 +1,38 @@
+{
+  "tests": [
+    {
+      "name": "Create new chat",
+      "method": "POST",
+      "path": "/?action=create",
+      "body": {
+        "user_id": 1,
+        "member_ids": [2],
+        "name": "Test Chat",
+        "is_group": false,
+        "is_encrypted": true
+      },
+      "expectedStatus": 201,
+      "expectedBody": {
+        "chat_id": "number",
+        "message": "string"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Send message",
+      "method": "POST",
+      "path": "/?action=send",
+      "body": {
+        "chat_id": 1,
+        "user_id": 1,
+        "text": "Hello world"
+      },
+      "expectedStatus": 201,
+      "expectedBody": {
+        "message_id": "number",
+        "created_at": "string"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
